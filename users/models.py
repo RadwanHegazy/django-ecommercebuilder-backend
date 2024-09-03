@@ -22,11 +22,10 @@ class User (AbstractUser) :
     username = None
 
     email = models.EmailField(unique=True)
-    shop_name = models.CharField(max_length=225)
-    stripe_secert_key = models.TextField()
-    stripe_public_key = models.TextField()
+    phonenumber = models.CharField(max_length=20, unique=True, null=True, blank=True)
+    shop_name = models.SlugField(max_length=225, unique=True)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['shop_name']
+    REQUIRED_FIELDS = ['shop_name','phonenumber']
 
     def __str__(self) -> str:
         return self.shop_name
