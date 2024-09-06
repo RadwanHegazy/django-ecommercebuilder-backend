@@ -40,7 +40,7 @@ class LoginSerializer (serializers.Serializer) :
 class RegisterSerializer (serializers.ModelSerializer) : 
     class Meta:
         model = User
-        fields = ['email','password', 'shop_name', 'stripe_secert_key', 'stripe_public_key']
+        fields = ['email','password', 'shop_name','phonenumber']
 
     def create(self, *args, **kwargs) : 
         self.user = User.object.create_user(**self.validated_data)
@@ -59,4 +59,4 @@ class RegisterSerializer (serializers.ModelSerializer) :
 class ProfileSerializer (serializers.ModelSerializer) :
     class Meta:
         model = User
-        fields = ['id','email','shop_name','stripe_secert_key', 'stripe_public_key']
+        fields = ['id','email','shop_name', 'phonenumber']

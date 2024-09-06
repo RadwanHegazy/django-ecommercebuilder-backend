@@ -8,7 +8,7 @@ class CreateProducts (APIView) :
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request) : 
-        serializer = self.serialier_class(request.data, context={'user':request.user})
+        serializer = self.serialier_class(data=request.data, context={'user':request.user})
         if serializer.is_valid() : 
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
